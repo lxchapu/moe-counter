@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Moe Counter!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css" />
+    <style>
+      strong {
+        color: #ff4500;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      This is a fork of <a href="https://github.com/journey-ad/Moe-Counter" target="_blank">Moe Counter</a>, based on
+      <a href="https://workers.cloudflare.com/" target="_blank">Cloudflare Workers</a>.
+    </p>
+
+    <h3>How to use:</h3>
+    <h5>SVG address</h5>
+    <code>https://moe-counter.lxchapu.com/:id</code>
+    <h5>Img tag</h5>
+    <code>&lt;img src="https://moe-counter.lxchapu.com/:id" alt=":id" /&gt;</code>
+    <h5>Markdown</h5>
+    <code>![:id](https://moe-counter.lxchapu.com/:id)</code>
+
+    <h3>
+      eg:<img src="https://moe-counter.lxchapu.com/github@moe-counter" alt="Moe Counter!" height="100" width="315" />
+    </h3>
+    <em>Data can access by anyone, please <strong>DO NOT</strong> enter personal information</em>
+
+    <details>
+      <summary>
+        <h3 style="display: inline-block">More theme</h3>
+      </summary>
+      <p>
+        Just use the query parameters <code>theme</code>, like this:
+        <code>https://moe-counter.lxchapu.com/:id?theme=moebooru</code>
+      </p>
+      <h5>asoul</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=asoul" alt="A-SOUL" />
+      <h5>moebooru</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=moebooru" alt="Moebooru" />
+      <h5>moebooru-h</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=moebooru-h" alt="Moebooru-Hentai" />
+      <h5>rule34</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=rule34" alt="Rule34" />
+      <h5>gelbooru</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=gelbooru" alt="Gelbooru" />
+      <h5>gelbooru-h</h5>
+      <img src="https://moe-counter.lxchapu.com/demo?theme=gelbooru-h" alt="Gelbooru-Hentai" />
+    </details>
+
+    <h3>Credits</h3>
+    <ul>
+      <li><a href="https://space.bilibili.com/703007996" target="_blank" rel="nofollow">A-SOUL</a></li>
+      <li><a href="https://github.com/moebooru/moebooru" target="_blank" rel="nofollow">moebooru</a></li>
+      <li><a href="https://rule34.xxx/" target="_blank" rel="nofollow">rule34.xxx</a> <strong>NSFW</strong></li>
+      <li><a href="https://gelbooru.com/" target="_blank" rel="nofollow">gelbooru.com</a> <strong>NSFW</strong></li>
+    </ul>
+
+    <h3>Tool</h3>
+    <div>
+      <code>https://moe-counter.lxchapu.com/</code>
+      <input
+        id="name"
+        type="text"
+        placeholder=":name"
+        style="display: inline; width: 80px; margin: 0 4px; vertical-align: middle"
+      />
+      <code>?theme=</code>
+      <select id="theme" style="display: inline; margin: 0 4px; vertical-align: middle">
+        <option value="asoul">asoul</option>
+        <option value="moebooru">moebooru</option>
+        <option value="moebooru-h">moebooru-h</option>
+        <option value="rule34">rule34</option>
+        <option value="gelbooru">gelbooru</option>
+        <option value="gelbooru-h">gelbooru-h</option>
+      </select>
+      <button id="get">Get</button><img id="result" style="display: block" />
+      <script>
+        var btn = document.getElementById('get'),
+          img = document.getElementById('result');
+
+        btn.addEventListener('click', function () {
+          var name = document.getElementById('name'),
+            themeEl = document.getElementById('theme');
+          var text = name.value ? name.value.trim() : '';
+          var theme = themeEl.value || 'moebooru';
+          if (!text) {
+            alert('Please input counter name.');
+            return;
+          }
+
+          img.src = 'https://moe-counter.lxchapu.com/' + text + '?theme=' + theme;
+        });
+      </script>
+    </div>
+
+    <p>
+      <a href="https://github.com/lxchapu/moe-counter" target="_blank">source code</a>
+    </p>
+  </body>
+</html>

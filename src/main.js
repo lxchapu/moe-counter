@@ -1,5 +1,6 @@
-import { Router, error, json } from 'itty-router';
+import { Router, error, html, json } from 'itty-router';
 import themes from '../themes';
+import indexHtml from './index.html';
 
 const DEFAULT_LENGTH = 7;
 const DEFAULT_THEME = 'moebooru';
@@ -41,6 +42,7 @@ const getCountImage = (count, theme, length, pixelated) => {
 
 const router = Router();
 
+router.get('/', () => html(indexHtml));
 router.get('/favicon.ico', () => error(404));
 
 router.get('/heart-beat', () => {
