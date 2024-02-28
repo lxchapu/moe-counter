@@ -1,0 +1,21 @@
+{
+  "name": "moe-counter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "build": "webpack",
+    "prettier": "prettier --write ."
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "prettier": "^3.2.5",
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4",
+    "wrangler": "^3.0.0"
+  },
+  "dependencies": {
+    "itty-router": "^4.0.27"
+  }
+}
