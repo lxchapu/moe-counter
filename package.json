@@ -6,7 +6,8 @@
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
     "build": "webpack",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "initdb": "wrangler d1 execute count --local --file=./schema.sql"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",

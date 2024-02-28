@@ -1,6 +1,7 @@
 import { Router, error, html, json } from 'itty-router';
 import themes from '../themes';
 import indexHtml from './index.html';
+import { getNum, setNum } from './d1.js';
 
 const DEFAULT_LENGTH = 7;
 const DEFAULT_THEME = 'moebooru';
@@ -56,14 +57,14 @@ router.get('/heart-beat', () => {
 router.get('/record/:id', vaildateId, async (req, env) => {
   const { id } = req.params;
 
-  const num = Number.parseInt(await env.count.get(id)) || 0;
+  const num = await getNum(env.DB, id);
 
   return json({ id, num });
 });
 
 router.get('/:id', vaildateId, async (req, env) => {
   const { id } = req.params;
-  let { theme, render } = req.query;
+  let { theme } = req.query;
 
   if (!theme || !themes[theme]) {
     theme = DEFAULT_THEME;
@@ -76,9 +77,9 @@ router.get('/:id', vaildateId, async (req, env) => {
     count = 123456789;
     length = 10;
   } else {
-    count = Number.parseInt(await env.count.get(id)) || 0;
+    count = await getNum(env.DB, id);
     count += 1;
-    await env.count.put(id, count.toString());
+    await setNum(env.DB, id, count);
   }
   const image = getCountImage(count, theme, length, true);
 

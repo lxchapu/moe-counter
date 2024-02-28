@@ -3,10 +3,6 @@ main = "dist/worker.js"
 compatibility_date = "2024-02-27"
 workers_dev = true
 
-kv_namespaces = [
-  { binding = "count", id = "d54a20641c5c4ef68c248c3a6173239e" }
-]
-
 [[routes]]
 pattern = "moe-counter.lxchapu.com"
 zone_name = "lxchapu.com"
@@ -14,3 +10,8 @@ custom_domain = true
 
 [build]
 command = "npm run build"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "count"
+database_id = "08323087-a0a9-44cb-a940-c82df8945a47"
