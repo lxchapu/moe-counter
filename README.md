@@ -1,13 +1,11 @@
-# cf-workers-moe-counter
+# moe-counter
 
-![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)
-
-基于 Cloudflare Workers 的 [Moe-Counter](https://github.com/journey-ad/Moe-Counter) 萌萌计数器的分叉。
+基于 [Cloudflare Workers](https://workers.cloudflare.com/) 的 [Moe-Counter](https://github.com/journey-ad/Moe-Counter) 萌萌计数器的分叉。
 
 ![Moe Counter](https://moe-counter.lxchapu.com/github@moe-counter)
 
 <details>
-<summary>更多主题</summary>
+<summary>More theme</summary>
 
 **asoul**
 
@@ -27,14 +25,22 @@
 
 </details>
 
+## Demo
+
+<https://moe-counter.lxchapu.com>
+
+## Usage
+
+![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)
+
+## Configuration
+
 ## Credits
 
-- [replit](https://replit.com/)
-- [A-SOUL_Official](https://space.bilibili.com/703007996)
-- [moebooru](https://github.com/moebooru/moebooru)
-- rule34.xxx NSFW
-- gelbooru.com NSFW
-- [Icons8](https://icons8.com/icons/set/star)
+- [A-SOUL](https://space.bilibili.com/703007996)
+- [Moebooru](https://github.com/moebooru/moebooru)
+- [Rule 34](https://rule34.xxx/) **❗NSFW❗**
+- [Gelbooru](https://gelbooru.com/) **❗NSFW❗**
 
 ## License
 
