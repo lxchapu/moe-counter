@@ -4,6 +4,7 @@ import { getNum, setNum } from './db.js';
 import { getCountImage } from './utils.js';
 import { validateId } from './middlewares.js';
 import indexHtml from './index.html';
+import themes from '../themes';
 
 const router = Router();
 
