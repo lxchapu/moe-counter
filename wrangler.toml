@@ -1,11 +1,10 @@
 name = "moe-counter"
 main = "dist/worker.js"
 compatibility_date = "2024-02-27"
-workers_dev = true
+workers_dev = false
 
 [[routes]]
 pattern = "moe-counter.lxchapu.com"
-zone_name = "lxchapu.com"
 custom_domain = true
 
 [build]
