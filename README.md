@@ -31,9 +31,45 @@
 
 ## Usage
 
-![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)
+**自己部署**
+
+[![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/lxchapu/moe-counter)
+
+- 分叉这个仓库
+- 在 [Cloudflare D1](https://developers.cloudflare.com/d1/) 创建一个数据库
+- 在 `wrangler.toml` 中修改对应的数据库名称和数据库 ID
+
+  ```toml
+  database_name = "<your database name>"
+  database_id = "<your database id>"
+  ```
+
+- 在 `wrangler.toml` 中修改成自己的域名
+
+  ```toml
+  [[routes]]
+  pattern = "<your custom domain>"
+  ```
+
+- 使用 `npm run deploy` 编译并发布 worker
+
+如果想在本地运行，需要先初始化本地数据库。
+
+```sh
+npm run initdb
+```
 
 ## Configuration
+
+`config.yml`
+
+```yml
+site: '<your website>'
+
+length: 7
+
+theme: 'moebooru'
+```
 
 ## Credits
 
