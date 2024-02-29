@@ -64,8 +64,6 @@ npm run initdb
 `config.yml`
 
 ```yml
-site: '<your website>'
-
 length: 7
 
 theme: 'moebooru'
