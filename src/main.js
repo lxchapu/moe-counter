@@ -1,42 +1,9 @@
 import { Router, error, html, json } from 'itty-router';
-import themes from '../themes';
+import config from '../config.yml';
+import { getNum, setNum } from './db.js';
+import { getCountImage } from './utils.js';
+import { validateId } from './middlewares.js';
 import indexHtml from './index.html';
-import { getNum, setNum } from './d1.js';
-
-const vaildateId = (req) => {
-  const { id } = req.params;
-  if (!/^[a-z0-9:.@_-]{1,256}$/i.test(id)) {
-    return error(400, 'Invalid Counter ID');
-  }
-};
-
-/**
- * @param {number} count 需要显示的数字
- * @param {string} theme 主题
- * @param {number} length 数字总长度
- * @param {boolean} pixelated 是否像素化
- * @returns
- */
-const getCountImage = (count, theme, length, pixelated) => {
-  const countArray = count.toString().padStart(length, '0').split('');
-
-  const { width, height, images } = themes[theme];
-  let x = 0;
-  const parts = countArray.reduce((pre, cur) => {
-    const uri = images[cur];
-    const image = `<image x="${x}" y="0" width="${width}" height="${height}" href="${uri}"/>`;
-    x += width;
-    return pre + image;
-  }, '');
-
-  return (
-    '<?xml version="1.0" encoding="UTF-8"?>' +
-    `<svg width="${x}" height="${height}" version="1.1"` +
-    ' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"' +
-    `${pixelated ? ' style="image-rendering: pixelated"' : ''}>` +
-    `<title>Moe Counter</title><g>${parts}</g></svg>`
-  );
-};
 
 const router = Router();
 
@@ -51,7 +18,7 @@ router.get('/heart-beat', () => {
   });
 });
 
-router.get('/record/:id', vaildateId, async (req, env) => {
+router.get('/record/:id', validateId, async (req, env) => {
   const { id } = req.params;
 
   const num = await getNum(env.DB, id);
@@ -59,16 +26,16 @@ router.get('/record/:id', vaildateId, async (req, env) => {
   return json({ id, num });
 });
 
-router.get('/:id', vaildateId, async (req, env) => {
+router.get('/:id', validateId, async (req, env) => {
   const { id } = req.params;
   let { theme } = req.query;
 
   if (!theme || !themes[theme]) {
-    theme = env.DEFAULT_THEME;
+    theme = config.theme;
   }
 
   let count = 0,
-    length = env.DEFAULT_LENGTH;
+    length = config.length;
 
   if (id === 'demo') {
     count = 123456789;

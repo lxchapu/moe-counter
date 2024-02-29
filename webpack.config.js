@@ -1,5 +1,6 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const yaml = require('yamljs');
 
 module.exports = {
   mode: 'production',
@@ -24,14 +25,17 @@ module.exports = {
         test: /\.(gif|png)$/i,
         type: 'asset/inline',
       },
+      {
+        test: /\.yml$/i,
+        type: 'json',
+        parser: {
+          parse: yaml.parse,
+        },
+      },
     ],
   },
   optimization: {
     minimize: false,
   },
-  performance: {
-    hints: false,
-  },
-  devtool: 'inline-source-map',
   plugins: [new CleanWebpackPlugin()],
 };
