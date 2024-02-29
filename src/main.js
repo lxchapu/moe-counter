@@ -3,9 +3,6 @@ import themes from '../themes';
 import indexHtml from './index.html';
 import { getNum, setNum } from './d1.js';
 
-const DEFAULT_LENGTH = 7;
-const DEFAULT_THEME = 'moebooru';
-
 const vaildateId = (req) => {
   const { id } = req.params;
   if (!/^[a-z0-9:.@_-]{1,256}$/i.test(id)) {
@@ -67,11 +64,11 @@ router.get('/:id', vaildateId, async (req, env) => {
   let { theme } = req.query;
 
   if (!theme || !themes[theme]) {
-    theme = DEFAULT_THEME;
+    theme = env.DEFAULT_THEME;
   }
 
   let count = 0,
-    length = DEFAULT_LENGTH;
+    length = env.DEFAULT_LENGTH;
 
   if (id === 'demo') {
     count = 123456789;

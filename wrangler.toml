@@ -14,3 +14,7 @@ command = "npm run build"
 binding = "DB"
 database_name = "count"
 database_id = "08323087-a0a9-44cb-a940-c82df8945a47"
+
+[vars]
+DEFAULT_LENGTH = 7
+DEFAULT_THEME = 'moebooru'
