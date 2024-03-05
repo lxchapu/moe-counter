@@ -22,6 +22,10 @@ module.exports = {
         type: 'asset/source',
       },
       {
+        test: /\.txt$/i,
+        type: 'asset/source',
+      },
+      {
         test: /\.(gif|png)$/i,
         type: 'asset/inline',
       },

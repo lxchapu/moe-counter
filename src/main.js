@@ -1,15 +1,18 @@
-import { Router, error, html, json } from 'itty-router';
+import { Router, error, html, json, text } from 'itty-router';
 import config from '../config.yml';
 import { getNum, setNum } from './db.js';
 import { getCountImage } from './utils.js';
 import { validateId } from './middlewares.js';
 import indexHtml from './index.html';
 import themes from '../themes';
+import robots from './robots.txt';
 
 const router = Router();
 
 router.get('/', () => html(indexHtml));
 router.get('/favicon.ico', () => error(404));
+
+router.get('/robots.txt', () => text(robots));
 
 router.get('/heart-beat', () => {
   return new Response('alive', {
